@@ -1,0 +1,36 @@
+
+// dentro del archivo van en modelo y el script de la base de datos para su creacion 
+// o del plataforma_vacaciones\src\main\resources\applicacation.properties en la parte de spring.jpa.hibernate.ddl-auto=none 
+//cambiar este none por create-drop spring.jpa.hibernate.ddl-auto=create-drop y esto facilita la creacion de la base de datos con las tablas.
+// y adicional a eso se fue una clase EstadoEntityEliminar la cual no es necesaria en el proyecto. 
+
+
+// algunos datos para la base de datos que no quedaron dentro de archivo.rar 
+
+INSERT INTO `plataforma_be_bolder_estado`.`domicilio` (`id_domicilio`, `calle`, `numero`, `barrio`) VALUES ('1', '2n', '3', 'camelias');
+INSERT INTO `plataforma_be_bolder_estado`.`domicilio` (`id_domicilio`, `calle`, `numero`, `barrio`) VALUES ('2', '24', '5', 'sol');
+INSERT INTO `plataforma_be_bolder_estado`.`domicilio` (`id_domicilio`, `calle`, `numero`, `barrio`) VALUES ('3', '14', '12', 'villa maria');
+INSERT INTO `plataforma_be_bolder_estado`.`domicilio` (`id_domicilio`, `calle`, `numero`, `barrio`) VALUES ('4', '1', '4', 'villa ana');
+
+INSERT INTO `plataforma_be_bolder_estado`.`contrato` (`id_contrato`, `tipo_contrato`, `estado_contrato`, `estado_empleado`, `fecha_ingreso`) VALUES ('1', 'vigente', 'vigente', 'vigente', '2022-05-01');
+INSERT INTO `plataforma_be_bolder_estado`.`contrato` (`id_contrato`, `tipo_contrato`, `estado_contrato`, `estado_empleado`, `fecha_ingreso`) VALUES ('2', 'vigente', 'vigente', 'vigente', '2022-05-01');
+INSERT INTO `plataforma_be_bolder_estado`.`contrato` (`id_contrato`, `tipo_contrato`, `estado_contrato`, `estado_empleado`, `fecha_ingreso`) VALUES ('3', 'vigente', 'vigente', 'vigente', '2022-05-01');
+INSERT INTO `plataforma_be_bolder_estado`.`contrato` (`id_contrato`, `tipo_contrato`, `estado_contrato`, `estado_empleado`, `fecha_ingreso`) VALUES ('4', 'vigente', 'vigente', 'vigente', '2022-05-01');
+
+INSERT INTO `plataforma_be_bolder_estado`.`usuario` (`id_documento`, `id_domicilio`, `id_contrato`, `tipo_documento`, `Primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `correo`, `telefono`, `apodo_usuario`, `contraseña`) VALUES ('1007268651', '1', '1', 'cc', 'pablo ', 'emilio ', 'muñoz ', 'vaca', 'pablo@gmail.com', '31245', 'pablo11', '1234');
+INSERT INTO `plataforma_be_bolder_estado`.`usuario` (`id_documento`, `id_domicilio`, `id_contrato`, `tipo_documento`, `Primer_nombre`, `primer_apellido`, `correo`, `telefono`, `apodo_usuario`, `contraseña`) VALUES ('1007268652', '2', '2', 'cc', 'liz', 'beltran', 'liz@gmail.com', '31458', 'liz22', '1234');
+INSERT INTO `plataforma_be_bolder_estado`.`usuario` (`id_documento`, `id_domicilio`, `id_contrato`, `tipo_documento`, `Primer_nombre`, `primer_apellido`, `segundo_apellido`, `correo`, `telefono`, `apodo_usuario`, `contraseña`) VALUES ('1007268653', '3', '3', 'cc', 'sebastian', 'beltran', 'vaca', 'sebastian@gmail.com', '31458', 'sebastian33', '1234');
+INSERT INTO `plataforma_be_bolder_estado`.`usuario` (`id_documento`, `id_domicilio`, `id_contrato`, `tipo_documento`, `Primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `correo`, `telefono`, `apodo_usuario`, `contraseña`) VALUES ('1007268654', '4', '4', 'cc', 'emanuel', 'camilo', 'melo', 'vaca', 'melo@gmail.com', '31458', 'camilo44', '1234');
+
+INSERT INTO `plataforma_be_bolder_estado`.`administrador` (`id_administrador`, `id_documento`) VALUES ('1', '1007268651');
+
+INSERT INTO `plataforma_be_bolder_estado`.`equipo` (`id_equipo`, `id_documento`, `nombre_equipo`) VALUES ('1', '1007268652', 'bakend');
+
+INSERT INTO `plataforma_be_bolder_estado`.`empleado` (`id_empleado`, `id_documento`, `id_equipo`, `id_administrador`) VALUES ('1', '1007268653', '1', '1');
+INSERT INTO `plataforma_be_bolder_estado`.`empleado` (`id_empleado`, `id_documento`, `id_equipo`, `id_administrador`) VALUES ('2', '1007268654', '1', '1');
+
+INSERT INTO `plataforma_be_bolder_estado`.`solicitud` (`id_solicitud`, `id_empleado`, `estado_supervisor`, `estado_administrador`, `fecha_solicitud`, `fecha_inicio`, `fecha_fin`, `dias_solicitados`, `nota_solicitud`, `fecha_control_estado`) VALUES ('1', '1', 'rechazada', 'rechazada', '2023-05-20', '2023-06-20', '2023-06-22', '2', 'cita medica', '2023-05-25');
+INSERT INTO `plataforma_be_bolder_estado`.`solicitud` (`id_solicitud`, `id_empleado`, `estado_supervisor`, `estado_administrador`, `fecha_solicitud`, `fecha_inicio`, `fecha_fin`, `dias_solicitados`, `nota_solicitud`, `fecha_control_estado`) VALUES ('2', '1', 'pendiente', 'pendiente', '2023-06-20', '2023-07-20', '2023-07-22', '2', 'cita medica', '2023-06-20');
+INSERT INTO `plataforma_be_bolder_estado`.`solicitud` (`id_solicitud`, `id_empleado`, `estado_supervisor`, `estado_administrador`, `fecha_solicitud`, `fecha_inicio`, `fecha_fin`, `dias_solicitados`, `fecha_control_estado`) VALUES ('3', '2', 'pendiente', 'pendiente', '2023-04-20', '2023-07-20', '2023-07-23', '3', '2023-06-20');
+INSERT INTO `plataforma_be_bolder_estado`.`solicitud` (`id_solicitud`, `id_empleado`, `estado_supervisor`, `estado_administrador`, `fecha_solicitud`, `fecha_inicio`, `fecha_fin`, `dias_solicitados`, `fecha_control_estado`) VALUES ('4', '2', 'aprobada', 'aprobada', '2023-05-20', '2023-06-27', '2023-06-30', '4', '2023-05-20');
+UPDATE `plataforma_be_bolder_estado`.`solicitud` SET `fecha_solicitud` = '2023-06-22' WHERE (`id_solicitud` = '2') and (`id_empleado` = '1');
